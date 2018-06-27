@@ -19,7 +19,7 @@ launchGame= function (){
 
           var a = $('<p>' + questionsOptions[i].question + '</p>');
 
-          var b = $('<div class="form-check">' + '<input class="form-check-input" type="radio" name="answer1' + i + '" id="exampleRadios1" value="0">' + '<label class="form-check-label" for="exampleRadios1"></label>' + questionsOptions[i].answers[0] + '</div> <div class="form-check">' + '<input class="form-check-input" type="radio" name="answer1' + i + '" id="exampleRadios1" value="1">' + '<label class="form-check-label" for="exampleRadios1"></label>' + questionsOptions[i].answers[1] + '</div> <div class="form-check">' + '<input class="form-check-input" type="radio" name="answer1' + i + '" id="exampleRadios1" value="2">' + '<label class="form-check-label" for="exampleRadios1"></label>' + questionsOptions[i].answers[2] + '</div> <div class="form-check">' + '<input class="form-check-input" type="radio" name="answer1' + i + '" id="exampleRadios1" value="3">' + '<label class="form-check-label" for="exampleRadios1"></label>' + questionsOptions[i].answers[3] + '</div>' );
+          var b = $('<div class="form-check">' + '<input class="form-check-input" type="radio" name="answer' + i + '" id="exampleRadios1" value="0">' + '<label class="form-check-label" for="exampleRadios1"></label>' + questionsOptions[i].answers[0] + '</div> <div class="form-check">' + '<input class="form-check-input" type="radio" name="answer' + i + '" id="exampleRadios1" value="1">' + '<label class="form-check-label" for="exampleRadios1"></label>' + questionsOptions[i].answers[1] + '</div> <div class="form-check">' + '<input class="form-check-input" type="radio" name="answer' + i + '" id="exampleRadios1" value="2">' + '<label class="form-check-label" for="exampleRadios1"></label>' + questionsOptions[i].answers[2] + '</div> <div class="form-check">' + '<input class="form-check-input" type="radio" name="answer' + i + '" id="exampleRadios1" value="3">' + '<label class="form-check-label" for="exampleRadios1"></label>' + questionsOptions[i].answers[3] + '</div>' );
 
           gameDiv.append(a,b);
 
@@ -27,19 +27,121 @@ launchGame= function (){
 
           userGuess = b.val();
 
-          
+          console.log(userGuess);
+    
     }
+
+    var submitButton = $("<button>");
+
+    submitButton.text("Submit");
+
+    submitButton.attr("id","submit-Button");
+
+    gameDiv.append(submitButton);
+
+
 }
 
-$(document).on("click", ".form-check-input", function(){
+// submit button on click and run conditionals 
+
+$(document).on("click", "#submit-Button", function(){
    
-   executeClicks();
+    console.log(wrongAnswers);
+    console.log(correctAnswers);
+
+   endGame();
 
  })
 
- executeClicks= function(){
+ endGame= function(){
  
-    console.log(userGuess);
+    $.each($("input[name='answer0']:checked"), function() {
+
+        if ($(this).val() === questionsOptions[0].correct) {
+          correctAnswers++;
+        }
+        else {
+          wrongAnswers++;
+        }
+      });
+
+      $.each($("input[name='answer1']:checked"), function() {
+        if ($(this).val() === questionsOptions[1].correct) {
+          correctAnswers++;
+        }
+        else {
+          wrongAnswers++;
+        }
+      });
+
+      $.each($("input[name='answer2']:checked"), function() {
+        if ($(this).val() === questionsOptions[2].correct) {
+          correctAnswers++;
+        }
+        else {
+          wrongAnswers++;
+        }
+      });
+      $.each($("input[name='answer3']:checked"), function() {
+        if ($(this).val() === questionsOptions[3].correct) {
+          correctAnswers++;
+        }
+        else {
+          wrongAnswers++;
+        }
+      });
+      $.each($("input[name='answer4']:checked"), function() {
+        if ($(this).val() === questionsOptions[4].correct) {
+          correctAnswers++;
+        }
+        else {
+          wrongAnswers++;
+        }
+      });
+      $.each($("input[name='answer5']:checked"), function() {
+        if ($(this).val() === questionsOptions[5].correct) {
+          correctAnswers++;
+        }
+        else {
+          wrongAnswers++;
+        }
+      });
+      $.each($("input[name='answer6']:checked"), function() {
+        if ($(this).val() === questionsOptions[6].correct) {
+          correctAnswers++;
+        }
+        else {
+          wrongAnswers++;
+        }
+      });
+      $.each($("input[name='answer7']:checked"), function() {
+        if ($(this).val() === questionsOptions[7].correct) {
+          correctAnswers++;
+        }
+        else {
+          wrongAnswers++;
+        }
+      });
+      $.each($("input[name='answer8']:checked"), function() {
+        if ($(this).val() === questionsOptions[8].correct) {
+          correctAnswers++;
+        }
+        else {
+          wrongAnswers++;
+        }
+      });
+
+      $("#questions-section").hide();
+
+
+      var resultDiv = $("<div>");
+
+      var results = $("<h2> Correct Answers: " + correctAnswers + "</h2><br><h2> Wrong Answers: " + wrongAnswers + "</h2>");
+
+        resultDiv.append(results);
+
+        $("#results-section").append(resultDiv);
+
  }
 
 //  The decrement function.
