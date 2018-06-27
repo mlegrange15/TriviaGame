@@ -45,19 +45,18 @@ launchGame= function (){
 // submit button on click and run conditionals 
 
 $(document).on("click", "#submit-Button", function(){
-   
-    console.log(wrongAnswers);
-    console.log(correctAnswers);
 
    endGame();
 
  })
 
  endGame= function(){
+
+    clearInterval(time);
  
     $.each($("input[name='answer0']:checked"), function() {
 
-        if ($(this).val() === questionsOptions[0].correct) {
+        if ($(this).val() == questionsOptions[0].correct) {
           correctAnswers++;
         }
         else {
@@ -66,7 +65,7 @@ $(document).on("click", "#submit-Button", function(){
       });
 
       $.each($("input[name='answer1']:checked"), function() {
-        if ($(this).val() === questionsOptions[1].correct) {
+        if ($(this).val() == questionsOptions[1].correct) {
           correctAnswers++;
         }
         else {
@@ -75,7 +74,7 @@ $(document).on("click", "#submit-Button", function(){
       });
 
       $.each($("input[name='answer2']:checked"), function() {
-        if ($(this).val() === questionsOptions[2].correct) {
+        if ($(this).val() == questionsOptions[2].correct) {
           correctAnswers++;
         }
         else {
@@ -83,7 +82,7 @@ $(document).on("click", "#submit-Button", function(){
         }
       });
       $.each($("input[name='answer3']:checked"), function() {
-        if ($(this).val() === questionsOptions[3].correct) {
+        if ($(this).val() == questionsOptions[3].correct) {
           correctAnswers++;
         }
         else {
@@ -91,7 +90,7 @@ $(document).on("click", "#submit-Button", function(){
         }
       });
       $.each($("input[name='answer4']:checked"), function() {
-        if ($(this).val() === questionsOptions[4].correct) {
+        if ($(this).val() == questionsOptions[4].correct) {
           correctAnswers++;
         }
         else {
@@ -99,7 +98,7 @@ $(document).on("click", "#submit-Button", function(){
         }
       });
       $.each($("input[name='answer5']:checked"), function() {
-        if ($(this).val() === questionsOptions[5].correct) {
+        if ($(this).val() == questionsOptions[5].correct) {
           correctAnswers++;
         }
         else {
@@ -107,7 +106,7 @@ $(document).on("click", "#submit-Button", function(){
         }
       });
       $.each($("input[name='answer6']:checked"), function() {
-        if ($(this).val() === questionsOptions[6].correct) {
+        if ($(this).val() == questionsOptions[6].correct) {
           correctAnswers++;
         }
         else {
@@ -115,7 +114,7 @@ $(document).on("click", "#submit-Button", function(){
         }
       });
       $.each($("input[name='answer7']:checked"), function() {
-        if ($(this).val() === questionsOptions[7].correct) {
+        if ($(this).val() == questionsOptions[7].correct) {
           correctAnswers++;
         }
         else {
@@ -123,7 +122,7 @@ $(document).on("click", "#submit-Button", function(){
         }
       });
       $.each($("input[name='answer8']:checked"), function() {
-        if ($(this).val() === questionsOptions[8].correct) {
+        if ($(this).val() == questionsOptions[8].correct) {
           correctAnswers++;
         }
         else {
@@ -152,9 +151,10 @@ function decrement() {
     $("#timer-section").html("<h2> Time Left: " + number + "</h2>");
     //  Once number hits zero...
     if (number === 0) {
-        clearInterval(time);
       //  Alert the user that time is up.
       alert("Time Up!");
+
+      endGame();
     }
   }
 
@@ -166,10 +166,6 @@ $(".start-button").on("click", function() {
     launchGame();
  
  });
-
-// Need a function to end the game when the time runs out and then dynamically show the score page.
-
-// Need a on click function for a play again buttton to reload the game and start over. 
 
 
 });
@@ -230,15 +226,3 @@ var questionsOptions = [
     correct: 0,
     }
 ];
-
-// var correctAnswers = [
-//     "French Horn",
-//     "Butterfly",
-//     "Goliath Nation Bank",
-//     "Ducky Tie",
-//     "The Mermaid Theory",
-//     "Stella",
-//     "Patrice",
-//     "Scooter",
-//     "Olive Theory",
-// ]
