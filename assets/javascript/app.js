@@ -19,14 +19,29 @@ launchGame= function (){
 
           var a = $('<p>' + questionsOptions[i].question + '</p>');
 
-          var b = $('<div class="form-check">' + '<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>' + '<label class="form-check-label" for="exampleRadios1"></label>' + questionsOptions[i].answers[0] + '</div> <div class="form-check">' + '<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>' + '<label class="form-check-label" for="exampleRadios1"></label>' + questionsOptions[i].answers[1] + '</div> <div class="form-check">' + '<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>' + '<label class="form-check-label" for="exampleRadios1"></label>' + questionsOptions[i].answers[2] + '</div> <div class="form-check">' + '<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>' + '<label class="form-check-label" for="exampleRadios1"></label>' + questionsOptions[i].answers[3] + '</div>' );
+          var b = $('<div class="form-check">' + '<input class="form-check-input" type="radio" name="answer1" id="exampleRadios1" value="0" checked>' + '<label class="form-check-label" for="exampleRadios1"></label>' + questionsOptions[i].answers[0] + '</div> <div class="form-check">' + '<input class="form-check-input" type="radio" name="answer2" id="exampleRadios1" value="1" checked>' + '<label class="form-check-label" for="exampleRadios1"></label>' + questionsOptions[i].answers[1] + '</div> <div class="form-check">' + '<input class="form-check-input" type="radio" name="answer3" id="exampleRadios1" value="2" checked>' + '<label class="form-check-label" for="exampleRadios1"></label>' + questionsOptions[i].answers[2] + '</div> <div class="form-check">' + '<input class="form-check-input" type="radio" name="answer4" id="exampleRadios1" value="3" checked>' + '<label class="form-check-label" for="exampleRadios1"></label>' + questionsOptions[i].answers[3] + '</div>' );
 
           gameDiv.append(a,b);
 
           $("#questions-section").append(gameDiv);
 
+          userGuess = b.val();
+
+          
     }
 }
+
+$(document).on("click", ".form-check-input", function(){
+   
+   executeClicks();
+
+ })
+
+ executeClicks= function(){
+ 
+    console.log(userGuess);
+ }
+
 //  The decrement function.
 function decrement() {
     //  Decrease number by one.
@@ -50,8 +65,17 @@ $(".start-button").on("click", function() {
  
  });
 
+// Need a function to end the game when the time runs out and then dynamically show the score page.
+
+// Need a on click function for a play again buttton to reload the game and start over. 
+
 
 });
+
+var correctAnswers = 0;
+var wrongAnswers = 0;
+
+var userGuess = [];
 
 var time = 0;
 
